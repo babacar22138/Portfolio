@@ -25,14 +25,13 @@
     color: var(--text-color);
 }
 
-
 .soprasteria {
     width: 100%;
-    align-content: center;
     position: relative;
     transition: transform 0.3s;
     box-shadow: 0 0 30px black;
     border-radius: 20px;
+    overflow: hidden;
 }
 
 .soprasteria:hover .partie-bas {
@@ -56,7 +55,6 @@
     font-size: var(--font-size-subtitle);
     color: var(--btn-bg-hover);
 }
-
 
 .btn-details {
     color: var(--text-color-2);
@@ -85,15 +83,7 @@
     filter: brightness(1.15);
 }
 
-
 /* ----------- partie de haut -------------- */
-
-.partie-haut h3 {
-    text-align: center;
-    font-size: 25px;
-    margin-bottom: 25px;
-}
-
 
 .partie-haut {
     background: #0e2c4c;
@@ -106,43 +96,57 @@
     border-radius: 20px 20px 0 0;
 }
 
-.partie-haut img {
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 30px;
-    width: clamp(80px, 40%, 160px);
+.partie-haut h3 {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 15px;
+    margin-bottom: 0;
+    color: var(--text-color);
 }
 
+/* ----------- vidéo -------------- */
+
+.partie-haut video {
+    display: block;
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+}
 
 /* ----------- partie du bas -------------- */
+
 .partie-bas {
     opacity: 0;
-    padding: 25px;
+    padding: 20px 25px;
     position: absolute;
-    top: 0;
-    height: 100%;
+    bottom: 0;
+    left: 0;
     width: 100%;
-    transition: opacity 0.5s ease;
-    background: rgba(0, 0, 0, 0.488);
-    backdrop-filter: blur(6px);
-    border-radius: 20px;
-    font-size: 11px;
+    height: auto;
+    transition: opacity 0.4s ease;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.92) 70%, rgba(0, 0, 0, 0));
+    border-radius: 0 0 20px 20px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    gap: 20px;
+    justify-content: flex-end;
+    gap: 14px;
+}
+
+.partie-bas p {
+    text-align: left;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: var(--text-color);
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .partie-bas img {
     max-width: 25px;
 }
-
-.partie-bas p {
-    text-align: left;
-    font-size: 0.9rem;
-    line-height: 1.6;
-}
-
 
 /* --------------- boutons ---------------- */
 
@@ -161,7 +165,6 @@
     margin-right: 8px;
 }
 
-
 /* -------------------------------- media queries ------------------------- */
 
 @media screen and (max-width: 1410px) {
@@ -179,7 +182,6 @@
         grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     }
 }
-
 
 /* ---------- téléphone ---------- */
 
@@ -214,6 +216,10 @@
     .partie-haut h3 {
         font-size: 20px;
     }
+
+    .partie-haut video {
+        height: 180px;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -222,7 +228,7 @@
     }
 
     .partie-bas p {
-        font-size: 0.82rem;
+        font-size: 0.78rem;
     }
 
     .btn-projets a {
