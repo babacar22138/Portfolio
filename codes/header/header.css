@@ -163,7 +163,7 @@ header a:hover {
     }
 
     .header-phone span{
-        font-size: 45px;
+        font-size: 2.8rem;
         color: var(--text-color-2);
         align-self: center;
     }

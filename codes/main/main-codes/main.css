@@ -985,6 +985,10 @@ form textarea:focus {
         width: 100%;
     }
 
+    #btn-contact {
+        border: 1px solid;
+    }
+
     /* ----------------------------- */
 
     .presentation h2 {
