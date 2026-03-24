@@ -1,0 +1,1008 @@
+:root {
+    /* --- Couleurs --- */
+    --bg-color: linear-gradient(#091C30, #030b13);
+    --bg-color-choix-2: #03080D;
+    --text-color: #efebe2;
+    --text-color-2: #3FA9F5;
+    --btn-bg: #6fb5e700;
+    --btn-bg-hover: #5db3ef;
+    --btn-secondaire-bg: #296c9c00;
+    --btn-secondaire-bg-hover: aqua;
+    --shadow-color: black;
+    --color-titre-partie: aqua;
+
+    /* --- Tailles --- */
+    --font-size-title: 40px;
+    --font-size-subtitle: 16px;
+    --padding-main: 0 250px 150px 250px;
+    --border-radius: 10px;
+    --border-radius-hover: 20px;
+    --box-shadow: 0 0 15px var(--shadow-color);
+    --box-shadow-hover: 0 0 25px var(--shadow-color);
+    --transition: all 0.4s;
+}
+
+
+* {
+    font-family: monospace;
+    margin: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+/* --------------------------- background --------------------------- */
+
+/* ---- reset ---- */
+/* body {
+    margin: 0;
+    font: normal 75% Arial, Helvetica, sans-serif;
+}
+
+canvas {
+    display: block;
+    vertical-align: bottom;
+} */
+
+/* ---- particles.js container ---- */
+#particles-js {
+    /* position: absolute;
+    width: 100%;
+    height: 100%; */
+    /* background-color: black;
+    background-image: url("");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%; */
+}
+
+/* ---- stats.js ---- */
+/* .count-particles {
+    background: #1c2200;
+    position: absolute;
+    top: 48px;
+    left: 0;
+    width: 80px;
+    color: #13E8E9;
+    font-size: .8em;
+    text-align: left;
+    text-indent: 4px;
+    line-height: 14px;
+    padding-bottom: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-weight: bold;
+} 
+
+.js-count-particles {
+    font-size: 1.1em;
+}*/
+
+ #stats,
+.count-particles {
+    -webkit-user-select: none;
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+#stats {
+    border-radius: 3px 3px 0 0;
+    overflow: hidden;
+}
+
+.count-particles {
+    border-radius: 0 0 3px 3px;
+}
+
+#particles-js {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+} 
+
+/* ---------------------------------------------------------- */
+
+
+
+body {
+    min-height: 100vh;
+    /* background: #03080e; */
+    background: black;
+    /* background-color: #050505;  */
+}
+
+main {
+    margin-top: 84px;
+    padding: var(--padding-main);
+}
+
+.acceuil,
+.a_propos,
+.competences-outils,
+.contact,
+.projets {
+    margin-top: 20vh;
+    scroll-margin-top: 140px;
+}
+
+/* --- transition fluide --- */
+.titre,
+.competences-outils,
+.projets,
+.contact,
+.cards,
+.form {
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+}
+
+.a_propos,
+.competences-outils,
+.contact,
+.projets {
+    position: relative;
+}
+
+
+/* ----------- linéar gradient ----------- */
+
+.a_propos::after,
+.competences-outils::after,
+.contact::after,
+.projets::after {
+    content: "";
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 2px;
+    transition: width 0.8s;
+    background: linear-gradient(to right, black 0%, #12D8FA 51%, black 100%);
+}
+
+.a_propos.visible::after,
+.competences-outils.visible::after,
+.contact.visible::after,
+.projets.visible::after {
+    width: 35%;
+}
+
+/* --- titre des parties ---  */
+
+.a_propos h2,
+.competences-outils h2,
+.contact h2,
+.projets h2 {
+    text-align: center;
+    margin-bottom: 110px;
+    font-size: 30px;
+        background: linear-gradient(to right, #1FA2FF 0%, #12D8FA 51%, #1FA2FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+/* -------------- photo de profil en mouvement ---------------- */
+
+@keyframes flottaison {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+#photo-profil {
+    animation: flottaison 3s ease-in-out infinite;
+}
+
+/* ------------------------------------------------------------------------------ acceuil -------------------------------------------------------------------------- */
+
+
+
+/* -------- transition après loader -------------- */
+
+.acceuil-caché {
+    opacity: 0;
+    transition: all 1.5s ease-in;
+}
+
+.acceuil.visible {
+    opacity: 1;
+    transition: transform 1.2s ease-in;
+}
+
+.prenom-nom,
+.presentation h3,
+.reseaux-acceuil {
+    opacity: 0;
+    transition: opacity 0.8s ease-in;
+}
+
+/* ------------------------------ */
+
+.acceuil {
+    opacity: 0;
+    transform: translateY(-100px);
+    transition: all 1s ease-out;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap-reverse;
+    gap: 100px;
+    position: relative;
+    margin-top: 40vh;
+}
+
+/* ----------- photo de profil --------------- */
+
+.photo {
+    align-content: center;
+}
+
+#photo-profil {
+    background-color: #091c3000;
+    border: 3px solid var(--text-color-2);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 1.4s ease-in;
+    box-shadow: 0 0 15px rgba(31, 162, 255, 0.4);
+}
+
+
+/* ------ presentation ------- */
+
+.presentation {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-width: 50%;
+    gap: 10px;
+}
+
+.prenom-nom {
+    font-size: var(--font-size-title);
+}
+
+.presentation h2 {
+    white-space: nowrap;
+    letter-spacing: 5px;
+    font-size: 4.8vw;
+}
+
+.presentation span {
+    background: linear-gradient(to right, #1FA2FF 0%, #12D8FA 51%, #1FA2FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.presentation h3 {
+    margin: 20px 0;
+    font-size: 1.0vw;
+}
+
+.presentation h3,
+.presentation h2 {
+    text-align: left;
+    color: var(--text-color);
+}
+
+
+/* --------------- boutons ------------------*/
+.btn-accueil{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.reseaux-acceuil {
+    opacity: 0;
+    transition: opacity 1.4s ease-in;
+}
+
+
+.btn-grad {
+    font-size: var(--font-size-subtitle);
+    background-color: var(--btn-bg);
+    text-decoration: none;
+}
+
+.btn-grad {
+  background-image: linear-gradient(to right, #1FA2FF 0%, #12D8FA 51%, #1FA2FF 100%);
+}
+
+.btn-grad {
+  margin: 10px;
+  padding: 15px 45px;
+  text-align: center;
+  text-transform: capitalize;
+  transition: opacity 1.2s ease-in, transform 0.3s;
+  background-size: 200% auto;
+  color: var(--text-color);
+  /* box-shadow: 0 0 10px #eee; */
+  border-radius: 10px;
+  display: block;
+  outline: none;
+  border: none;
+    font-weight: bold;
+    border: 0;
+    box-shadow: 0 0 15px rgba(31, 162, 255, 0.4);
+}
+
+.btn-grad:hover {
+  background-position: right center;
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+
+/* ------- commun (acceuil + projet)------------ */
+
+.btn-grad,
+.btn-details,
+.btn-voir {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    backdrop-filter: blur(8px);
+    padding: 15px;
+    border-radius: var(--border-radius);
+}
+
+.btn-details
+ {
+    transition: transform 0.3s;
+}
+
+#btn-contact:hover,
+#btn-telecharger:hover,
+.btn-details:hover,
+.btn-voir:hover {
+    transform: translateY(-5px);
+}
+
+
+#btn-contact:hover,
+#btn-telecharger:hover,
+.btn-details:hover,
+.btn-voir:hover {
+    border-radius: var(--border-radius-hover);
+    box-shadow: var(--box-shadow-hover);
+    transition: var(--transition);
+    font-weight: bold;
+    border: 0 0 0px;
+}
+
+#btn-contact{
+    opacity: 0;
+}
+
+#btn-telecharger{
+    margin-left: 0;
+    background: white;
+    color: black;
+    opacity: 0;
+    transition: opacity 1.2s;
+    box-shadow: 0 0 15px rgba(169, 203, 228, 0.4);
+}
+
+/* -------------------------------------------------------------------------- medias queries accueil -------------------------------------------------------------------------- */
+
+@media screen and (max-width: 1100px) {
+    .acceuil {
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 40px;
+        margin-top: 30vh;
+    }
+
+    .presentation {
+        max-width: 100%;
+        align-items: center;
+    }
+
+    .presentation h2 {
+        white-space: normal;
+        text-align: center;
+        font-size: clamp(28px, 6vw, 52px);
+    }
+
+    .presentation h3 {
+        text-align: center;
+        font-size: clamp(13px, 2vw, 18px);
+    }
+
+
+
+    .btn-accueil {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .acceuil {
+        margin-top: 20vh;
+        gap: 30px;
+    }
+
+    .presentation h2 {
+        font-size: clamp(24px, 8vw, 40px);
+        letter-spacing: 2px;
+    }
+
+    .presentation h3 {
+        font-size: 15px;
+        margin: 15px 0;
+    }
+
+    .btn-accueil {
+        flex-direction: column;
+        width: 60%;
+        align-items: center;
+    }
+
+    #btn-telecharger,
+    #btn-contact {
+        margin: 6px 0;
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .acceuil {
+        margin-top: 15vh;
+    }
+
+    .presentation h2 {
+        font-size: clamp(22px, 9vw, 34px);
+        letter-spacing: 1px;
+    }
+
+    #btn-telecharger,
+    #btn-contact {
+        width: 100%;
+    }
+}
+
+/* ----------------------------------------------------------------------- à propos -------------------------------------------------- */
+.a_propos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+}
+
+.a_propos p {
+    color: var(--text-color);
+    margin-bottom: 10px;
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+#paragraphe, #paragraphe2, #btn-telecharger{
+    opacity: 0;
+}
+
+/* #btn-telecharger{
+    transition: opacity 1.2s ease-in;
+} */
+
+#paragraphe, #paragraphe2{
+    transition: all 1.2s ease-in;
+}
+
+#paragraphe2 {
+    margin-top: 45px;
+}
+
+.btn-a-propos {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    max-width: 100%;
+    border-radius: 8px;
+    justify-content: center;
+}
+
+.btn-acceuil a {
+    text-decoration: none;
+}
+
+.a_propos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 16px;
+}
+
+.a_propos > p {
+    color: var(--text-color);
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+}
+
+#paragraphe, #btn-telecharger {
+    opacity: 0;
+}
+
+#paragraphe {
+    transition: all 1.2s ease-in;
+}
+
+/* ----------- grille de cartes ----------- */
+.centre_interet, .objectif, .soft_skills{
+    opacity: 0;
+}
+
+
+.infos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    max-width: 900px;
+    width: 100%;
+    margin-top: 45px;
+}
+
+.infos > div {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px 22px;
+    color: var(--text-color);
+    font-size: 14px;
+    line-height: 1.7;
+    transition: transform 0.3s, border-color 0.3s, opacity 1.2s;
+}
+
+.infos > div:hover {
+    transform: translateY(-5px);
+    border-color: rgba(63, 169, 245, 0.35);
+}
+
+.infos h3 {
+    font-size: 11px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--text-color-2);
+    margin-bottom: 12px;
+}
+
+/* ----------- liste compétences ----------- */
+
+.competences ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.competences ul li {
+    font-size: 13px;
+    padding: 5px 14px;
+    border-radius: 99px;
+    background: rgba(63, 169, 245, 0.12);
+    color: var(--text-color-2);
+    border: 1px solid rgba(63, 169, 245, 0.3);
+    transition: background 0.3s, border-color 0.3s;
+}
+
+.competences ul li:hover {
+    background: rgba(63, 169, 245, 0.25);
+    border-color: rgba(63, 169, 245, 0.6);
+}
+
+/* ----------- bouton ----------- */
+
+.btn-a-propos {
+    margin-top: 40px;
+    display: flex;
+    gap: 20px;
+    max-width: 100%;
+    border-radius: 8px;
+    justify-content: center;
+}
+
+.btn-acceuil a {
+    text-decoration: none;
+}
+
+/* ----------- responsive ----------- */
+
+@media screen and (max-width: 900px) {
+    .infos {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .competences {
+        grid-column: 1 / -1;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .infos {
+        grid-template-columns: 1fr;
+    }
+
+    .competences {
+        grid-column: 1;
+    }
+}
+/* ----------------------------------------------------------------------- Compétences et outils ------------------------------------------------------------------- */
+
+.competences-outils::after{
+    top: 130px;
+}
+
+/* ------------- cards --------------- */
+/* Section Principale */
+.competences-outils {
+    padding: 80px 10%;
+    /* background-color: #050505;  */
+}
+
+/* Grille des catégories */
+.container-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 50px;
+    align-items: start;
+}
+
+.titre-categorie {
+    color: var(--text-color);
+    font-size: 18px;
+    text-align: left;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.8;
+}
+
+/* Conteneur des icônes */
+.competences-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+/* Style des cartes individuelles */
+.icons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    width: fit-content; /* S'adapte au contenu */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: default;
+}
+
+/* Image et Texte dans la carte */
+.icons img {
+    width: 30px;
+    height: 30px;
+}
+
+.icons p {
+    color: var(--text-color);
+    font-size: 14px;
+    font-weight: 500;
+    margin: 0;
+}
+
+
+.icons:hover {
+    transform: translateY(-5px);
+    border-color: rgba(63, 169, 245, 0.6);
+}
+
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container-cards {
+        grid-template-columns: 1fr;
+    }
+    .icons {
+        width: 100%; /* Cartes pleine largeur sur mobile */
+        justify-content: center;
+    }
+}
+
+/* -------------------------------------------------------------------------- Contact --------------------------------------------------------------------------------- */
+
+form {
+    color: var(--text-color);
+    width: 70%;
+    margin: 0 auto;
+}
+
+form div {
+    max-width: 100%;
+}
+
+form label {
+    margin-bottom: 20px;
+    font-size: 20px;
+}
+
+form input {
+    height: 60px;
+}
+
+form textarea {
+    height: 170px;
+}
+
+form input,
+.message textarea {
+    padding: 10px;
+    font-size: 15px;
+    text-align: start;
+    outline: none;
+    border-radius: 8px;
+    color: var(--text-color);
+    backdrop-filter: blur(8px);
+    background-color: #030b1300;
+    border: 1px solid var(--text-color);
+    box-shadow: 0 0 3px var(--text-color);
+}
+
+
+
+form input:focus,
+form textarea:focus {
+    border: 1px solid var(--text-color-2);
+    background-color: #030b1358;
+    box-shadow: 0 0 3px var(--text-color-2);
+}
+
+/* --------------------------------------- */
+
+.nom-prenom {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    width: 100%;
+}
+
+.nom,
+.prenom {
+    min-width: 48%;
+    width: 50%;
+}
+
+.nom,
+.prenom,
+.sujet,
+.entreprise,
+.message {
+    display: flex;
+    flex-direction: column;
+}
+
+.nom-prenom,
+.sujet,
+.entreprise,
+.message {
+    margin-bottom: 30px;
+}
+
+/* ------ bouton du formulaire --------- */
+
+.btn-form {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+}
+
+#btn-submit {
+    text-align: center;
+    font-weight: bold;
+    font-size: 17px;
+    color: black;
+    outline: none;
+    box-shadow: 0 0 2px black;
+    transition: transform 0.3s;
+    transition: box-shadow 0.3s;
+    background-color: var(--text-color-2);
+    width: 100%;
+    border: 0;
+    transition: var(--transition);
+    text-transform: lowercase;
+}
+
+
+#btn-submit:hover {
+    cursor: pointer;
+    font-size: 19px;
+    width: 93%;
+    transform: translateY(-5px);
+    box-shadow: 0 4px 2px black;
+}
+
+
+
+
+/* -------------------------------------------------------------------------- medias queries -------------------------------------------------------------------------- */
+
+@media screen and (max-width: 1500px) {
+    .prenom-nom {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    main {
+        padding: 0 200px 200px 200px;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    main {
+        padding: 0 100px 100px 100px;
+    }
+
+    .acceuil {
+        justify-content: center;
+        flex-wrap: wrap-reverse;
+    }
+
+    #photo-profil {
+        height: 280px;
+        position: unset;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .a_propos p{
+        font-size: 16px;
+    }
+    
+}
+
+/* ---------------------------------------------- téléphone ---------------------------------------------- */
+
+@media screen and (max-width: 800px) {
+    main {
+        padding: 0 30px 200px 30px;
+    }
+
+    .acceuil{
+        margin-top: 250px;
+    }
+
+    .a_propos,
+    .competences-outils,
+    .contact,
+    .projets {
+        margin-top: 90px;
+    }
+
+
+    /* -------------- acceuil ------------------- */
+
+    .presentation h3 {
+        margin: 30px 0;
+    }
+
+    .presentation h4 {
+        margin: 30px 0;
+    }
+
+    .btn-acceuil {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    #btn-contact,
+    #btn-telecharger {
+        flex-direction: column;
+        font-size: 18px;
+        font-weight: bold;
+        width: 100%;
+    }
+
+    /* --------------- compétences et outils --------------- */
+
+    .cards {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        padding: 45px;
+    }
+
+
+    /* ----------- formulaire ------------- */
+
+    .nom-prenom {
+        flex-direction: column;
+    }
+
+    .nom,
+    .prenom {
+        width: 100%;
+    }
+
+
+    /* --- boutons formulaire --- */
+
+    .btn-form {
+        flex-direction: column;
+    }
+
+    .btn-form input {
+        width: 100%;
+        font-size: 20px;
+    }
+}
+
+
+@media screen and (max-width: 500px) {
+    main {
+        margin-top: 165px;
+    }
+
+    .header-phone span {
+        font-size: 40px;
+    }
+
+
+
+    /* ------------- boutons acceuil --------------- */
+
+    /* -------- boutons ----------- */
+    .btn-acceuil {
+        width: 100%;
+    }
+
+    #btn-contact,
+    #btn-telecharger {
+        width: 100%;
+    }
+
+    /* ----------------------------- */
+
+    .presentation h2 {
+        font-size: 35px;
+    }
+
+    /* ------------------------------------ */
+    .a_propos p{
+        font-size: 14px;
+    }
+
+    /* ----------------- compétences et outils ----------------- */
+
+    .competences-outils h2{
+        font-size: 25px;
+    }
+
+    .cards div p {
+        font-size: 13px;
+    }
+}

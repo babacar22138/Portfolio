@@ -1,0 +1,231 @@
+:root {
+    /* --- Couleurs --- */
+    --bg-color: linear-gradient(#091C30, #030b13);
+    --bg-color-choix-2: #03080D;
+    --text-color: #efebe2;
+    --text-color-2: #3FA9F5;
+    --btn-bg: #6fb5e700;
+    --btn-bg-hover: #5db3ef;
+    --btn-secondaire-bg: #296c9c00;
+    --btn-secondaire-bg-hover: aqua;
+    --shadow-color: black;
+    --color-titre-partie: aqua;
+}
+
+/* ---------------------- partie projets ------------------------------ */
+.projets {
+    padding: 0 205px;
+}
+
+.liste-projets {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(400px, 100%), 1fr));
+    place-items: center;
+    gap: 25px;
+    color: var(--text-color);
+}
+
+
+.soprasteria {
+    width: 100%;
+    align-content: center;
+    position: relative;
+    transition: transform 0.3s;
+    box-shadow: 0 0 30px black;
+    border-radius: 20px;
+}
+
+.soprasteria:hover .partie-bas {
+    opacity: 1;
+}
+
+.soprasteria:hover {
+    transform: translateY(-10px);
+}
+
+/* ------------ boutons ------------- */
+
+.btn-projets {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+.btn-details, .btn-voir {
+    font-size: var(--font-size-subtitle);
+    color: var(--btn-bg-hover);
+}
+
+
+.btn-details {
+    color: var(--text-color-2);
+    border: 1px solid;
+    margin: 10px;
+    transition: var(--transition);
+}
+
+.btn-details:hover {
+    color: var(--text-color);
+    transition: var(--transition);
+    border-radius: var(--border-radius-hover);
+}
+
+.btn-voir {
+    background-color: var(--text-color-2);
+    color: var(--text-color);
+    border: 0;
+    transition: var(--transition);
+}
+
+.btn-voir:hover {
+    background-color: var(--text-color-2);
+    color: var(--text-color);
+    border: 0;
+    filter: brightness(1.15);
+}
+
+
+/* ----------- partie de haut -------------- */
+
+.partie-haut h3 {
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 25px;
+}
+
+
+.partie-haut {
+    background: #0e2c4c;
+    padding: 25px;
+    border-radius: 20px;
+    transition: border-radius 1s ease-out;
+}
+
+.partie-haut.border {
+    border-radius: 20px 20px 0 0;
+}
+
+.partie-haut img {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    width: clamp(80px, 40%, 160px);
+}
+
+
+/* ----------- partie du bas -------------- */
+.partie-bas {
+    opacity: 0;
+    padding: 25px;
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    transition: opacity 0.5s ease;
+    background: rgba(0, 0, 0, 0.488);
+    backdrop-filter: blur(6px);
+    border-radius: 20px;
+    font-size: 11px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+}
+
+.partie-bas img {
+    max-width: 25px;
+}
+
+.partie-bas p {
+    text-align: left;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+
+/* --------------- boutons ---------------- */
+
+.btn-projets a {
+    text-decoration: none;
+    width: 45%;
+    font-size: clamp(12px, 1.1vw, 16px);
+    transition: font-size 0.2s ease;
+}
+
+.btn-projets a:hover {
+    font-size: clamp(13px, 1.2vw, 17px);
+}
+
+.btn-projets a img {
+    margin-right: 8px;
+}
+
+
+/* -------------------------------- media queries ------------------------- */
+
+@media screen and (max-width: 1410px) {
+    .projets {
+        padding: 0 80px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .projets {
+        padding: 0 30px;
+    }
+
+    .liste-projets {
+        grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
+    }
+}
+
+
+/* ---------- téléphone ---------- */
+
+@media screen and (max-width: 768px) {
+    .projets {
+        padding: 0;
+    }
+
+    .liste-projets {
+        grid-template-columns: 1fr;
+        place-items: center;
+    }
+
+    .soprasteria {
+        width: 90%;
+    }
+
+    .btn-projets {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .btn-projets a {
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .btn-projets a:hover {
+        font-size: 17px;
+    }
+
+    .partie-haut h3 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .soprasteria {
+        width: 100%;
+    }
+
+    .partie-bas p {
+        font-size: 0.82rem;
+    }
+
+    .btn-projets a {
+        font-size: 15px;
+    }
+}

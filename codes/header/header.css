@@ -1,0 +1,171 @@
+:root{
+    --text-color: #efebe2;
+    --text-color-2: #3FA9F5;
+}
+
+header {
+    /* background: #0e29472f; */
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+    box-shadow: 0 3px 10px var(--barre-header);
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 20;
+}
+
+/* ---------- boutons pour le format téléphone --------- */
+
+.open-btn {
+    display: none;
+}
+
+.close-btn {
+    display: none;
+}
+
+/* ------------------------------------------------------ */
+
+header span {
+    font-size: 1.8vw;
+    font-weight: bold;
+    background: linear-gradient(to right, #1FA2FF 0%, #12D8FA 51%, #1FA2FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+header ul {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    justify-content: space-around;
+    list-style: none;
+    gap: 20px;
+}
+
+header a {
+    color:var(--text-color);
+    text-decoration: none;
+    font-size: 1.0vw;
+}
+
+header a:hover {
+    text-decoration: underline;
+    text-underline-offset: 10px;
+    color: var(--text-color-2);
+    transition: color 0.2s;
+}
+
+
+/* ---------------------------------------------------- format téléphone --------------------------------------------------------- */
+
+@media screen and (max-width: 1000px) {
+    body{
+        width: 100%;
+    }
+    header {
+        transform: translateY(-120vh);
+        transition: 0.4s;
+    }
+
+    .visible {
+    transform: translateY(0%);
+    }
+
+    header{
+        display: flex;
+        flex-direction: column;
+        background-color: #0e294749;
+        backdrop-filter: blur(8px);
+        height: 100%;
+    }
+
+
+    header nav{
+        box-shadow: none;
+        padding: 13px;
+        border-radius: 30px;
+    }
+
+
+    /* ------------------------------ buttons ---------------------------------- */
+
+    
+    /* ------------------- bouton ouverture --------------------- */
+
+    .open-btn {
+        display: block;
+        top: 0;
+        font-size: 40px;
+        text-decoration: none;
+        color: var(--text-color);
+    }
+
+
+    /* ------------------- bouton fermeture + span --------------------- */
+
+    .btn-span span{
+        font-size: 40px;
+    }
+
+    .btn-span{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 100%;
+        
+    }
+
+    .close-btn {
+        display: block;
+        font-size: 40px;
+        color: var(--text-color);
+        text-decoration: none;
+        padding-left: 10px;
+    }
+
+    .close-btn:hover{
+        color: white;
+        text-decoration: none;
+    }
+
+
+
+    /* ------------------- nav --------------------- */
+    
+
+    header nav ul{
+        flex-direction: column;
+    }
+
+    header a{
+        font-size: 30px;
+    }
+
+     /* ------------ .header-phone ------------- */
+    
+     
+    
+    .header-phone{
+        z-index: 20;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 30px;
+        background: #0e294700;
+        backdrop-filter: blur(10px);
+    }
+
+    .header-phone span{
+        font-size: 45px;
+        color: var(--text-color-2);
+        align-self: center;
+    }
+
+}
