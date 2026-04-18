@@ -117,13 +117,21 @@ main {
     padding: var(--padding-main);
 }
 
-.acceuil,
-.a_propos,
-.competences-outils,
-.contact,
+.acceuil {
+    margin-top: 20vh;
+    scroll-margin-top: 300px;
+}
+
 .projets {
     margin-top: 20vh;
-    scroll-margin-top: 140px;
+    scroll-margin-top: 100px;
+}
+
+.a_propos,
+.competences-outils,
+.contact {
+    margin-top: 20vh;
+    scroll-margin-top: 240px;
 }
 
 /* --- transition fluide --- */
@@ -182,6 +190,7 @@ main {
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
+    cursor: default;
 }
 
 
@@ -222,7 +231,6 @@ main {
 }
 
 .prenom-nom,
-.presentation h3,
 .reseaux-acceuil {
     opacity: 0;
     transition: opacity 0.8s ease-in;
@@ -266,7 +274,7 @@ main {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    max-width: 50%;
+    max-width: 60%;
     gap: 10px;
 }
 
@@ -280,7 +288,16 @@ main {
     font-size: 4.8vw;
 }
 
-.presentation span {
+.prenom-nom h2 span {
+    background: linear-gradient(to right, #1FA2FF 0%, #12D8FA 51%, #1FA2FF 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+
+
+#spanPresentation {
     background: linear-gradient(to right, #1FA2FF 0%, #12D8FA 51%, #1FA2FF 100%);
     -webkit-background-clip: text;
     background-clip: text;
@@ -398,15 +415,36 @@ main {
     box-shadow: 0 0 15px rgba(169, 203, 228, 0.4);
 }
 
-/* -------------------------------------------------------------------------- medias queries accueil -------------------------------------------------------------------------- */
+/* ----------- medias queries acceuil ----------- */
+
+@media screen and (max-width: 1500px) {
+    .prenom-nom {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    main {
+        padding: 0 200px 200px 200px;
+    }
+}
 
 @media screen and (max-width: 1100px) {
+    main {
+        padding: 0 100px 100px 100px;
+    }
+
     .acceuil {
         flex-direction: column;
         align-items: center;
         justify-content: center;
         gap: 40px;
-        margin-top: 30vh;
+        flex-wrap: wrap-reverse;
+    }
+
+    #photo-profil {
+        height: 280px;
+        position: unset;
     }
 
     .presentation {
@@ -425,17 +463,45 @@ main {
         font-size: clamp(13px, 2vw, 18px);
     }
 
-
-
     .btn-accueil {
         justify-content: center;
         flex-wrap: wrap;
     }
 }
 
+@media screen and (max-width: 800px) {
+    main {
+        padding: 0 30px 200px 30px;
+    }
+
+    .acceuil{
+        margin-top: 250px;
+    }
+
+    .presentation h3 {
+        margin: 30px 0;
+    }
+
+    .presentation h4 {
+        margin: 30px 0;
+    }
+
+    .btn-accueil {
+        flex-direction: column;
+        width: 90%;
+    }
+
+    #btn-contact,
+    #btn-telecharger {
+        flex-direction: column;
+        font-size: 18px;
+        font-weight: bold;
+        width: 100%;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .acceuil {
-        margin-top: 20vh;
         gap: 30px;
     }
 
@@ -462,9 +528,33 @@ main {
     }
 }
 
+@media screen and (max-width: 500px) {
+    main {
+        margin-top: 165px;
+    }
+
+    .header-phone span {
+        font-size: 40px;
+    }
+
+    .btn-accueil {
+        width: 70%;
+    }
+
+    #btn-contact,
+    #btn-telecharger {
+        width: 100%;
+    }
+
+    .presentation h2 {
+        font-size: 35px;
+    }
+
+}
+
 @media screen and (max-width: 480px) {
     .acceuil {
-        margin-top: 15vh;
+        margin-top: 30vh;
     }
 
     .presentation h2 {
@@ -496,6 +586,15 @@ main {
     text-align: center;
 }
 
+.a_propos > p {
+    color: var(--text-color);
+    max-width: 700px;
+    margin: 0 auto;
+    font-size: 18px;
+    line-height: 1.5;
+    text-align: center;
+}
+
 #paragraphe, #paragraphe2, #btn-telecharger{
     opacity: 0;
 }
@@ -505,6 +604,14 @@ main {
 } */
 
 #paragraphe, #paragraphe2{
+    transition: all 1.2s ease-in;
+}
+
+#paragraphe, #btn-telecharger {
+    opacity: 0;
+}
+
+#paragraphe {
     transition: all 1.2s ease-in;
 }
 
@@ -523,30 +630,6 @@ main {
 
 .btn-acceuil a {
     text-decoration: none;
-}
-
-.a_propos {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 16px;
-}
-
-.a_propos > p {
-    color: var(--text-color);
-    max-width: 700px;
-    margin: 0 auto;
-    font-size: 18px;
-    line-height: 1.5;
-    text-align: center;
-}
-
-#paragraphe, #btn-telecharger {
-    opacity: 0;
-}
-
-#paragraphe {
-    transition: all 1.2s ease-in;
 }
 
 /* ----------- grille de cartes ----------- */
@@ -626,11 +709,13 @@ main {
     justify-content: center;
 }
 
-.btn-acceuil a {
-    text-decoration: none;
-}
+/* ----------- medias queries à propos ----------- */
 
-/* ----------- responsive ----------- */
+@media screen and (max-width: 1000px) {
+    .a_propos p{
+        font-size: 16px;
+    }
+}
 
 @media screen and (max-width: 900px) {
     .infos {
@@ -651,6 +736,13 @@ main {
         grid-column: 1;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .a_propos p{
+        font-size: 14px;
+    }
+}
+
 /* ----------------------------------------------------------------------- Compétences et outils ------------------------------------------------------------------- */
 
 .competences-outils::after{
@@ -658,13 +750,11 @@ main {
 }
 
 /* ------------- cards --------------- */
-/* Section Principale */
+
 .competences-outils {
     padding: 80px 10%;
-    /* background-color: #050505;  */
 }
 
-/* Grille des catégories */
 .container-cards {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -682,14 +772,12 @@ main {
     opacity: 0.8;
 }
 
-/* Conteneur des icônes */
 .competences-container {
     display: flex;
     flex-wrap: wrap;
     gap: 15px;
 }
 
-/* Style des cartes individuelles */
 .icons {
     display: flex;
     flex-direction: row;
@@ -704,7 +792,6 @@ main {
     cursor: default;
 }
 
-/* Image et Texte dans la carte */
 .icons img {
     width: 30px;
     height: 30px;
@@ -723,15 +810,38 @@ main {
     border-color: rgba(63, 169, 245, 0.6);
 }
 
+/* ----------- medias queries compétences et outils ----------- */
 
-/* Responsive */
 @media (max-width: 768px) {
     .container-cards {
         grid-template-columns: 1fr;
     }
     .icons {
-        width: 100%; /* Cartes pleine largeur sur mobile */
+        width: 100%;
         justify-content: center;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .cards {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        padding: 45px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .competences-outils h2{
+        font-size: 25px;
+    }
+
+    .cards div p {
+        font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    .competences-outils::after{
+        top: 150px;
     }
 }
 
@@ -847,97 +957,15 @@ form textarea:focus {
     box-shadow: 0 4px 2px black;
 }
 
-
-
-
-/* -------------------------------------------------------------------------- medias queries -------------------------------------------------------------------------- */
-
-@media screen and (max-width: 1500px) {
-    .prenom-nom {
-        font-size: 30px;
-    }
-}
-
-@media screen and (max-width: 1300px) {
-    main {
-        padding: 0 200px 200px 200px;
-    }
-}
-
-@media screen and (max-width: 1100px) {
-    main {
-        padding: 0 100px 100px 100px;
-    }
-
-    .acceuil {
-        justify-content: center;
-        flex-wrap: wrap-reverse;
-    }
-
-    #photo-profil {
-        height: 280px;
-        position: unset;
-    }
-}
-
-@media screen and (max-width: 1000px) {
-    .a_propos p{
-        font-size: 16px;
-    }
-    
-}
-
-/* ---------------------------------------------- téléphone ---------------------------------------------- */
+/* ----------- medias queries contact ----------- */
 
 @media screen and (max-width: 800px) {
-    main {
-        padding: 0 30px 200px 30px;
-    }
-
-    .acceuil{
-        margin-top: 250px;
-    }
-
     .a_propos,
     .competences-outils,
     .contact,
     .projets {
         margin-top: 90px;
     }
-
-
-    /* -------------- acceuil ------------------- */
-
-    .presentation h3 {
-        margin: 30px 0;
-    }
-
-    .presentation h4 {
-        margin: 30px 0;
-    }
-
-    .btn-acceuil {
-        flex-direction: column;
-        width: 90%;
-    }
-
-    #btn-contact,
-    #btn-telecharger {
-        flex-direction: column;
-        font-size: 18px;
-        font-weight: bold;
-        width: 100%;
-    }
-
-    /* --------------- compétences et outils --------------- */
-
-    .cards {
-        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-        padding: 45px;
-    }
-
-
-    /* ----------- formulaire ------------- */
 
     .nom-prenom {
         flex-direction: column;
@@ -948,65 +976,8 @@ form textarea:focus {
         width: 100%;
     }
 
-
-    /* --- boutons formulaire --- */
-
-    .btn-form {
-        flex-direction: column;
-    }
-
     .btn-form input {
         width: 100%;
         font-size: 20px;
-    }
-}
-
-
-@media screen and (max-width: 500px) {
-    main {
-        margin-top: 165px;
-    }
-
-    .header-phone span {
-        font-size: 40px;
-    }
-
-
-
-    /* ------------- boutons acceuil --------------- */
-
-    /* -------- boutons ----------- */
-    .btn-acceuil {
-        width: 100%;
-    }
-
-    #btn-contact,
-    #btn-telecharger {
-        width: 100%;
-    }
-
-    #btn-contact {
-        border: 1px solid;
-    }
-
-    /* ----------------------------- */
-
-    .presentation h2 {
-        font-size: 35px;
-    }
-
-    /* ------------------------------------ */
-    .a_propos p{
-        font-size: 14px;
-    }
-
-    /* ----------------- compétences et outils ----------------- */
-
-    .competences-outils h2{
-        font-size: 25px;
-    }
-
-    .cards div p {
-        font-size: 13px;
     }
 }

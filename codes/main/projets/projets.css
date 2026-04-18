@@ -25,7 +25,7 @@
     color: var(--text-color);
 }
 
-.soprasteria {
+.projet {
     width: 100%;
     position: relative;
     transition: transform 0.3s;
@@ -34,11 +34,11 @@
     overflow: hidden;
 }
 
-.soprasteria:hover .partie-bas {
+.projet:hover .partie-bas {
     opacity: 1;
 }
 
-.soprasteria:hover {
+.projet:hover {
     transform: translateY(-10px);
 }
 
@@ -195,7 +195,7 @@
         place-items: center;
     }
 
-    .soprasteria {
+    .projet {
         width: 90%;
     }
 
@@ -223,7 +223,7 @@
 }
 
 @media screen and (max-width: 500px) {
-    .soprasteria {
+    .projet {
         width: 100%;
     }
 

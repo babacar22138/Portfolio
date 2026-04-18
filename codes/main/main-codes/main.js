@@ -174,6 +174,50 @@ function acceuilVisible() {
     setTimeout(apparition, 300);
 }
 
+const h3Content1 = 'Je suis ';
+const h3Content2 = ', étudiant en BUT informatique.';
+const spanPresentationContent = 'développeur web junior';
+
+const partie1 = document.getElementById('partie1');
+const partie2 = document.getElementById('partie2');
+const spanPresentation = document.getElementById('spanPresentation');
+console.log(h3Presentation, spanPresentation);
+let index4 = 0;
+let index5 = 0;
+let index6 = 0;
+
+function ecrireh3e1() {
+    partie1.classList.add('curseur');
+    if (index4 < h3Content1.length) {
+        partie1.textContent += h3Content1.charAt(index4);
+        index4++;
+        setTimeout(ecrireh3e1, 70);
+    } else {
+        partie1.classList.remove('curseur');
+        setTimeout(ecrireSpan, 300);
+    }
+}
+
+function ecrireSpan() {
+    spanPresentation.classList.add('curseur');
+    if (index5 < spanPresentationContent.length) {
+        spanPresentation.textContent += spanPresentationContent.charAt(index5);
+        index5++;
+        setTimeout(ecrireSpan, 70);
+    } else {
+        spanPresentation.classList.remove('curseur');
+        setTimeout(ecrirh3e2, 300);
+    }
+}
+
+function ecrirh3e2() {
+    partie2.classList.add('curseur');
+    if (index6 < h3Content2.length) {
+        partie2.textContent += h3Content2.charAt(index6);
+        index6++;
+        setTimeout(ecrirh3e2, 70);
+    }
+}
 
 // --------------------------------------------------------- apparition des éléments de l'accueil ----------------------------------------------------------------
 
@@ -207,7 +251,9 @@ function apparition() {
     setTimeout(() => {
         btnC.style.opacity = "1";
     }, 900);
+    ecrireh3e1();
 }
+
 
 
 const sectionsAfter = document.querySelectorAll('.a_propos, .competences-outils, .contact, .projets');
