@@ -1,8 +1,6 @@
-
 // --------- Loader ------------
 
 function ecritLogin() {
-
     identifant.classList.add('curseur');
     if (index < loginContent.length) {
         identifant.textContent += loginContent.charAt(index);
@@ -14,7 +12,6 @@ function ecritLogin() {
 }
 
 function ecritPassword() {
-
     identifant.classList.remove('curseur');
     password.classList.add('curseur');
     if (index2 < passwordContent.length) {
@@ -39,69 +36,57 @@ function welcome() {
     }
 }
 
-
 setTimeout(ecritLogin, 1000);
 
 function startApp() {
-    // 1. On cache le loader
     loader.classList.add('loader-hidden');
-
     setTimeout(() => {
         content.style.opacity = "1";
     }, 400);
     setTimeout(acceuilVisible, 400);
 }
 
-// --------------------------------------------------------- apparition des sections après scroll --------------------------------------------------------------------- 
+// ---- apparition des sections après scroll ----
 
 window.addEventListener('scroll', () => {
     const sections = document.querySelectorAll(".competences-outils,.titre, .a_propos, .projets, .contact, .cards, .form, .projet");
-
     sections.forEach(section => {
         const sectionTop = section.getBoundingClientRect().top;
         const triggerPoint = window.innerHeight * 0.8;
-
         if (sectionTop < triggerPoint) {
             section.style.opacity = "1";
         }
     });
 });
 
-
-// -------------------------------------------------------------------- à propos ----------------------------------------------------------------------------
+// ---- à propos ----
 
 const paragraphe_content = document.getElementById('paragraphe');
 const infos = document.getElementById('infos');
 const centreInteret = document.querySelector('.centre_interet');
 const objectif = document.querySelector('.objectif');
 const soft_skills = document.querySelector('.soft_skills');
-console.log(paragraphe_content, infos, centreInteret, objectif ,soft_skills);
+console.log(paragraphe_content, infos, centreInteret, objectif, soft_skills);
 
 function apparitionParagraphe() {
     paragraphe_content.style.opacity = '1';
-
     setTimeout(() => {
         apparitionInfos();
     }, 300);
 }
 
-function apparitionInfos(){
+function apparitionInfos() {
     centreInteret.style.opacity = '1';
-
     setTimeout(() => {
         objectif.style.opacity = '1';
     }, 300);
-
     setTimeout(() => {
         soft_skills.style.opacity = '1';
     }, 600);
-
 }
-
 
 const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
-        
         if (entry.isIntersecting) {
             apparitionParagraphe();
             observer.unobserve(entry.target);
@@ -110,17 +95,13 @@ const observer = new IntersectionObserver((entries) => {
 }, { threshold: 1.0 });
 
 if (paragraphe_content) {
-
     observer.observe(paragraphe_content);
+}
 
-} 
-
-// -----------------------------------------------------compétences et outils-----------------------------------------------------------------
-
+// ---- compétences et outils ----
 
 const cardsContainer = document.querySelector('.container-cards');
 const allIcons = document.querySelectorAll('.icons');
-
 
 allIcons.forEach(icon => {
     icon.style.opacity = "0";
@@ -140,16 +121,13 @@ const cardsObserver = new IntersectionObserver((entries) => {
             cardsObserver.unobserve(entry.target);
         }
     });
-}, { 
-    threshold: 0.2
-});
+}, { threshold: 0.2 });
 
 if (cardsContainer) {
     cardsObserver.observe(cardsContainer);
 }
 
-
-// -----------------------------------------------------Loader avant l'ouverture de la page-----------------------------------------------------------------
+// ---- variables loader ----
 
 const identifant = document.getElementById('identifiant');
 const password = document.getElementById('mdp');
@@ -163,10 +141,7 @@ let index = 0;
 let index2 = 0;
 let index3 = 0;
 
-
-
-
-// ---------------------------------------------------------------- acceuil visible apères loader ---------------------------------------------------------------
+// ---- accueil visible après loader ----
 
 function acceuilVisible() {
     const acceuil = document.querySelector('.acceuil');
@@ -219,12 +194,11 @@ function ecrirh3e2() {
     }
 }
 
-// --------------------------------------------------------- apparition des éléments de l'accueil ----------------------------------------------------------------
-
+// ---- apparition des éléments de l'accueil ----
 
 console.log(paragraphe_content);
 const h2 = document.querySelector('.prenom-nom');
-const reseaux = document.querySelector('.reseaux-acceuil')
+const reseaux = document.querySelector('.reseaux-acceuil');
 const photo = document.getElementById('photo-profil');
 const h3 = document.querySelector('.presentation h3');
 const btnT = document.getElementById('btn-telecharger');
@@ -232,29 +206,14 @@ const btnC = document.getElementById('btn-contact');
 console.log(h3);
 console.log(photo);
 
-
 function apparition() {
     photo.style.opacity = '1';
-
-    setTimeout(() => {
-        h2.style.opacity = "1";
-    }, 300);
-
-    setTimeout(() => {
-        h3.style.opacity = "1";
-    }, 600);
-
-    setTimeout(() => {
-        btnT.style.opacity = "1";
-    }, 600);
-
-    setTimeout(() => {
-        btnC.style.opacity = "1";
-    }, 900);
+    setTimeout(() => { h2.style.opacity = "1"; }, 300);
+    setTimeout(() => { h3.style.opacity = "1"; }, 600);
+    setTimeout(() => { btnT.style.opacity = "1"; }, 600);
+    setTimeout(() => { btnC.style.opacity = "1"; }, 900);
     ecrireh3e1();
 }
-
-
 
 const sectionsAfter = document.querySelectorAll('.a_propos, .competences-outils, .contact, .projets');
 
@@ -269,6 +228,33 @@ const afterObserver = new IntersectionObserver((entries) => {
 
 sectionsAfter.forEach(section => afterObserver.observe(section));
 
-// --------------------------------------------------------------- background ----------------------------------------------------------------------------------
+// ---- background particles ----
 
-particlesJS("particles-js", { "particles": { "number": { "value": 90, "density": { "enable": true, "value_area": 10000 } }, "color": { "value": "#efebe2" }, "shape": { "type": "polygon", "stroke": { "width": 1, "color": "#3fa9f5" }, "polygon": { "nb_sides": 3 }, "image": { "src": "img/github.svg", "width": 100, "height": 100 } }, "opacity": { "value": 1, "random": true, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } }, "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 73.08694910712106, "size_min": 20.301930307533627, "sync": true } }, "line_linked": { "enable": true, "distance": 180, "color": "#ffffff", "opacity": 0.10422178395625899, "width": 1 }, "move": { "enable": true, "speed": 10, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 1200, "rotateY": 1200 } } }, "interactivity": { "detect_on": "canvas", "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true }, "modes": { "grab": { "distance": 400, "line_linked": { "opacity": 1 } }, "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 }, "repulse": { "distance": 200, "duration": 0.4 }, "push": { "particles_nb": 4 }, "remove": { "particles_nb": 2 } } }, "retina_detect": true }); var count_particles, stats, update; stats = new Stats; stats.setMode(0); stats.domElement.style.position = 'absolute'; stats.domElement.style.left = '0px'; stats.domElement.style.top = '0px'; document.body.appendChild(stats.domElement); count_particles = document.querySelector('.js-count-particles'); update = function () { stats.begin(); stats.end(); if (window.pJSDom[0].pJS.particles && window.pJSDom[0].pJS.particles.array) { count_particles.innerText = window.pJSDom[0].pJS.particles.array.length; } requestAnimationFrame(update); }; requestAnimationFrame(update);;
+particlesJS("particles-js", {
+    "particles": {
+        "number": { "value": 90, "density": { "enable": true, "value_area": 10000 } },
+        "color": { "value": "#efebe2" },
+        "shape": {
+            "type": "polygon",
+            "stroke": { "width": 1, "color": "#3fa9f5" },
+            "polygon": { "nb_sides": 3 },
+            "image": { "src": "img/github.svg", "width": 100, "height": 100 }
+        },
+        "opacity": { "value": 1, "random": true, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } },
+        "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 73.08694910712106, "size_min": 20.301930307533627, "sync": true } },
+        "line_linked": { "enable": true, "distance": 180, "color": "#ffffff", "opacity": 0.10422178395625899, "width": 1 },
+        "move": { "enable": true, "speed": 10, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 1200, "rotateY": 1200 } }
+    },
+    "interactivity": {
+        "detect_on": "canvas",
+        "events": { "onhover": { "enable": true, "mode": "repulse" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+        "modes": {
+            "grab": { "distance": 400, "line_linked": { "opacity": 1 } },
+            "bubble": { "distance": 400, "size": 40, "duration": 2, "opacity": 8, "speed": 3 },
+            "repulse": { "distance": 200, "duration": 0.4 },
+            "push": { "particles_nb": 4 },
+            "remove": { "particles_nb": 2 }
+        }
+    },
+    "retina_detect": true
+});
