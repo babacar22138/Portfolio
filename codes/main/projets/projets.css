@@ -154,6 +154,31 @@
     max-width: 25px;
 }
 
+/* --------------- stack icons ---------------- */
+
+.stack-icons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.stack-icons img {
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    background: rgba(255, 255, 255, 0.06);
+    padding: 4px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.stack-icons img:hover {
+    transform: translateY(-4px);
+    border-color: rgba(63, 169, 245, 0.5);
+}
+
 /* --------------- boutons ---------------- */
 
 .btn-projets a {
