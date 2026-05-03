@@ -56,24 +56,27 @@
     color: var(--btn-bg-hover);
 }
 
+/* ---- transition au hover ET au relâchement ---- */
+
 .btn-details {
     color: var(--text-color-2);
     border: 1px solid;
     margin: 10px;
-    transition: var(--transition);
+    /* transition héritée de main.css via .btn-details */
 }
 
 .btn-details:hover {
     color: var(--text-color);
-    transition: var(--transition);
+    transform: translateY(-5px);
     border-radius: var(--border-radius-hover);
+    box-shadow: 0 0 25px black;
 }
 
 .btn-voir {
     background-color: var(--text-color-2);
     color: var(--text-color);
     border: 0;
-    transition: var(--transition);
+    /* transition héritée de main.css via .btn-voir */
 }
 
 .btn-voir:hover {
@@ -81,6 +84,9 @@
     color: var(--text-color);
     border: 0;
     filter: brightness(1.15);
+    transform: translateY(-5px);
+    border-radius: var(--border-radius-hover);
+    box-shadow: 0 0 25px black;
 }
 
 /* ----------- partie de haut -------------- */
@@ -154,7 +160,7 @@
     text-decoration: none;
     width: 45%;
     font-size: clamp(12px, 1.1vw, 16px);
-    transition: font-size 0.2s ease;
+    transition: font-size 0.2s ease, transform 0.4s, border-radius 0.4s, box-shadow 0.4s, color 0.4s, filter 0.4s;
 }
 
 .btn-projets a:hover {

@@ -106,7 +106,7 @@ const allIcons = document.querySelectorAll('.icons');
 allIcons.forEach(icon => {
     icon.style.opacity = "0";
     icon.style.transform = "translateY(30px)";
-    icon.style.transition = "opacity 0.6s ease-in, transform 1.0s ease-in";
+    icon.style.transition = "opacity 0.6s ease-in, transform 1.0s ease-in, border-color 0.3s, box-shadow 0.3s";
 });
 
 const cardsObserver = new IntersectionObserver((entries) => {
@@ -116,6 +116,12 @@ const cardsObserver = new IntersectionObserver((entries) => {
                 setTimeout(() => {
                     icon.style.opacity = "1";
                     icon.style.transform = "translateY(0)";
+                    // On retire les styles inline après l'animation d'entrée
+                    // pour laisser le CSS gérer les transitions hover
+                    setTimeout(() => {
+                        icon.style.transition = "";
+                        icon.style.transform = "";
+                    }, 1000 + index * 100);
                 }, index * 100);
             });
             cardsObserver.unobserve(entry.target);
@@ -215,18 +221,37 @@ function apparition() {
     ecrireh3e1();
 }
 
-const sectionsAfter = document.querySelectorAll('.a_propos, .competences-outils, .contact, .projets');
+// Sections courtes — à propos et contact
+const sectionsAfterSmall = document.querySelectorAll('.a_propos, .contact');
 
 const afterObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
+            setTimeout(() => {
+                entry.target.classList.add('visible');
+            }, 800);
             afterObserver.unobserve(entry.target);
         }
     });
 }, { threshold: 0.3 });
 
-sectionsAfter.forEach(section => afterObserver.observe(section));
+sectionsAfterSmall.forEach(section => afterObserver.observe(section));
+
+// Sections grandes — compétences et projets
+const sectionsAfterLarge = document.querySelectorAll('.competences-outils, .projets');
+
+const afterObserverLarge = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            setTimeout(() => {
+                entry.target.classList.add('visible');
+            }, 600);
+            afterObserverLarge.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.05 });
+
+sectionsAfterLarge.forEach(section => afterObserverLarge.observe(section));
 
 // ---- background particles ----
 
@@ -237,12 +262,11 @@ particlesJS("particles-js", {
         "shape": {
             "type": "polygon",
             "stroke": { "width": 1, "color": "#3fa9f5" },
-            "polygon": { "nb_sides": 3 },
-            "image": { "src": "img/github.svg", "width": 100, "height": 100 }
+            "polygon": { "nb_sides": 3 }
         },
         "opacity": { "value": 1, "random": true, "anim": { "enable": false, "speed": 1, "opacity_min": 0.1, "sync": false } },
-        "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 73.08694910712106, "size_min": 20.301930307533627, "sync": true } },
-        "line_linked": { "enable": true, "distance": 180, "color": "#ffffff", "opacity": 0.10422178395625899, "width": 1 },
+        "size": { "value": 3, "random": true, "anim": { "enable": false, "speed": 73, "size_min": 20, "sync": true } },
+        "line_linked": { "enable": true, "distance": 180, "color": "#ffffff", "opacity": 0.1, "width": 1 },
         "move": { "enable": true, "speed": 10, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false, "attract": { "enable": false, "rotateX": 1200, "rotateY": 1200 } }
     },
     "interactivity": {

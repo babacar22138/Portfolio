@@ -357,7 +357,7 @@ main {
     background: white;
     color: black;
     opacity: 0;
-    transition: opacity 1.2s;
+    transition: opacity 1.2s, transform 0.4s, border-radius 0.4s, box-shadow 0.4s;
     box-shadow: 0 0 15px rgba(169, 203, 228, 0.4);
 }
 
