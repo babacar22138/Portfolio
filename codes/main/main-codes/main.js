@@ -253,6 +253,56 @@ const afterObserverLarge = new IntersectionObserver((entries) => {
 
 sectionsAfterLarge.forEach(section => afterObserverLarge.observe(section));
 
+//------- toast -------
+
+document.addEventListener("DOMContentLoaded", () => {
+    const form = document.querySelector(".form");
+    const toast = document.getElementById("toast-notification");
+    const closeToastBtn = document.getElementById("close-toast");
+
+    if (form) {
+        form.addEventListener("submit", async (e) => {
+            e.preventDefault(); // Empêche la redirection Formspree
+
+            const data = new FormData(form);
+
+            try {
+                const response = await fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: {
+                        'Accept': 'application/json'
+                    }
+                });
+
+                if (response.ok) {
+                    // 1. Afficher le rectangle de succès
+                    toast.classList.add("show");
+
+                    // 2. Vider les champs du formulaire
+                    form.reset();
+
+                    // 3. Optionnel : Fermeture automatique après 5 secondes
+                    setTimeout(() => {
+                        toast.classList.remove("show");
+                    }, 5000);
+                } else {
+                    alert("Une erreur est survenue lors de l'envoi.");
+                }
+            } catch (error) {
+                alert("Erreur réseau. Veuillez réessayer.");
+            }
+        });
+    }
+
+    // Gestion du clic sur la croix (X) pour fermer
+    if (closeToastBtn) {
+        closeToastBtn.addEventListener("click", () => {
+            toast.classList.remove("show");
+        });
+    }
+});
+
 // ---- background particles ----
 
 particlesJS("particles-js", {
