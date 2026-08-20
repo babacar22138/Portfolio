@@ -57,6 +57,7 @@
 
 .count-particles {
     border-radius: 0 0 3px 3px;
+    display: none;
 }
 
 /* ---------------------------------------------------------- */
@@ -444,6 +445,11 @@ main {
         font-weight: bold;
         width: 100%;
     }
+
+    #photo-profil {
+        height: 215px;
+        position: unset;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -788,7 +794,7 @@ main {
 
 form {
     color: var(--text-color);
-    width: 70%;
+    width: 90%;
     margin: 0 auto;
 }
 

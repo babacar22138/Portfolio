@@ -70,7 +70,7 @@ header a:hover {
     }
     header {
         transform: translateY(-120vh);
-        transition: 0.4s;
+        transition: 0.7s;
     }
 
     .visible {
@@ -112,7 +112,7 @@ header a:hover {
     /* ------------------- bouton fermeture + span --------------------- */
 
     .btn-span span{
-        font-size: 40px;
+        font-size: 37px;
     }
 
     .btn-span{
