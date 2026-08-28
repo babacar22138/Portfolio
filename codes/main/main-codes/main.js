@@ -7,7 +7,7 @@ function ecritLogin() {
         index++;
         setTimeout(ecritLogin, 70);
     } else {
-        setTimeout(ecritPassword, 1200);
+        setTimeout(ecritPassword, 1000);
     }
 }
 
@@ -19,22 +19,22 @@ function ecritPassword() {
         index2++;
         setTimeout(ecritPassword, 70);
     } else {
-        setTimeout(welcome, 2200);
+        setTimeout(startApp, 500);
         identifant.classList.remove('curseur');
     }
 }
 
-function welcome() {
-    password.classList.remove('curseur');
-    welcome1.classList.add('curseur');
-    if (index3 < welcomeContent.length) {
-        welcome1.textContent += welcomeContent.charAt(index3);
-        index3++;
-        setTimeout(welcome, 70);
-    } else {
-        setTimeout(startApp, 1100);
-    }
-}
+// function welcome() {
+//     password.classList.remove('curseur');
+//     welcome1.classList.add('curseur');
+//     if (index3 < welcomeContent.length) {
+//         welcome1.textContent += welcomeContent.charAt(index3);
+//         index3++;
+//         setTimeout(welcome, 70);
+//     } else {
+//         setTimeout(startApp, 1100);
+//     }
+// }
 
 setTimeout(ecritLogin, 1000);
 
@@ -141,7 +141,7 @@ const welcome1 = document.getElementById('welcome');
 const loader = document.getElementById('loader');
 const content = document.getElementById('main-content');
 const loginContent = "Babacar.Sow";
-const passwordContent = "*********";
+const passwordContent = "*******";
 const welcomeContent = "Welcome to my portfolio !";
 let index = 0;
 let index2 = 0;

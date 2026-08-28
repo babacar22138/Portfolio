@@ -199,7 +199,6 @@ main {
     flex-direction: row-reverse;
     align-items: center;
     justify-content: space-between;
-    flex-wrap: wrap-reverse;
     gap: 100px;
     position: relative;
     margin-top: 40vh;
