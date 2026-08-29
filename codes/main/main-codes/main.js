@@ -5,9 +5,9 @@ function ecritLogin() {
     if (index < loginContent.length) {
         identifant.textContent += loginContent.charAt(index);
         index++;
-        setTimeout(ecritLogin, 70);
+        setTimeout(ecritLogin, 40);
     } else {
-        setTimeout(ecritPassword, 1000);
+        setTimeout(ecritPassword, 800);
     }
 }
 
