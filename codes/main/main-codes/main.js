@@ -157,7 +157,7 @@ function acceuilVisible() {
 
 const h3Content1 = 'Je suis ';
 const h3Content2 = ', étudiant en BUT informatique.';
-const spanPresentationContent = 'développeur web junior';
+const spanPresentationContent = 'développeur junior';
 
 const partie1 = document.getElementById('partie1');
 const partie2 = document.getElementById('partie2');
