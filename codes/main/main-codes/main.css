@@ -433,8 +433,11 @@ main {
     }
 
     .btn-accueil {
-        flex-direction: column;
-        width: 90%;
+        flex-direction: row;
+        width: 100vw;
+        align-items: center;
+        gap: 15px;
+        flex-wrap: nowrap;
     }
 
     #btn-contact,
@@ -467,15 +470,18 @@ main {
     }
 
     .btn-accueil {
-        flex-direction: column;
-        width: 60%;
+        flex-direction: row;
+        width: 100vw;
         align-items: center;
+        gap: 15px;
+        flex-wrap: nowrap;
     }
 
     #btn-telecharger,
     #btn-contact {
         margin: 6px 0;
         font-size: 16px;
+        width: 40%;
     }
 }
 
@@ -485,16 +491,16 @@ main {
     }
 
     .header-phone span {
-        font-size: 40px;
+        font-size: 28px;
     }
 
     .btn-accueil {
-        width: 70%;
+        width: 100vw;
     }
 
     #btn-contact,
     #btn-telecharger {
-        width: 100%;
+        width: 40%;
     }
 
     .presentation h2 {
@@ -504,7 +510,7 @@ main {
 
 @media screen and (max-width: 480px) {
     .acceuil {
-        margin-top: 35vh;
+        margin-top: 30vh;
     }
 
     .presentation h2 {
@@ -514,7 +520,7 @@ main {
 
     #btn-telecharger,
     #btn-contact {
-        width: 100%;
+        width: 40%;
     }
 }
 
