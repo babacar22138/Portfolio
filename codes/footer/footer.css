@@ -45,7 +45,7 @@ footer::after{
     transition: all 0.3s;
 }
 
-.reseaux a:hover .reseaux a i{
+.reseaux a i:hover{
     cursor: pointer;
     color: var(--text-color);
 }
